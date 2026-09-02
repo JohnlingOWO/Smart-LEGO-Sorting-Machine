@@ -30,3 +30,36 @@ The project has completed end-to-end prototype implementation and full functiona
 · Inference efficiency: Pure model forward inference time on Raspberry Pi is ≤50ms per frame, far exceeding the preset target of ≤100ms; end-to-end full recognition pipeline time is ≤1s
 
 · Cost control: Total final hardware cost of HKD 1,580, with a low-cost alternative design available to bring the total within the original HKD 1,540 budget
+
+Shape Recognition Model Implementation
+
+Dataset
+The shape model was trained on the Images of LEGO Bricks dataset published by Gdańsk University of Technology on the Most Wiedzy open-data platform. The dataset contains both 3D-rendered images (the majority — several thousand per class) and a smaller number of real photographs (a few hundred per class). Seventeen LEGO part numbers were selected to cover the most common bricks, plates, slopes, tiles, and Technic axles relevant to this project. 
+The dataset was pre-split into three disjoint subsets and copied into the training environment:
+Table 5.4. Shape dataset split
+Split	Split Number of images
+Training	29,184
+Validation	6,242
+Test	6,288
+Total	41,714
+
+All 17 classes are present in every split. The 17 LEGO part numbers used as class labels are: 11212, 11477, 2420, 2431, 3001, 3002, 3003, 3004, 3005, 3009, 3010, 3021, 3023, 3039, 3623, 3666, 6091.
+Images were loaded with tf.keras.utils.image_dataset_from_directory at the native MobileNetV3Large input size of 224×224×3, in batches of 32, with a fixed seed of 42.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
