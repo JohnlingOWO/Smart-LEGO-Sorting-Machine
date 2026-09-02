@@ -62,6 +62,9 @@ Training was carried out in four sequential stages. Each stage saved a Keras che
 Training Results
 ![Training and validation accuracy and loss over 35 epochs](IMG_2.jpeg)
 
+![Confusion matrix](IMG_3.jpeg)
+
+![Per-class precision, recall, F1-score, and support](IMG_4.jpeg)
 
 
 
