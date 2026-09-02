@@ -46,7 +46,11 @@ Total	41,714
 All 17 classes are present in every split. The 17 LEGO part numbers used as class labels are: 11212, 11477, 2420, 2431, 3001, 3002, 3003, 3004, 3005, 3009, 3010, 3021, 3023, 3039, 3623, 3666, 6091.
 Images were loaded with tf.keras.utils.image_dataset_from_directory at the native MobileNetV3Large input size of 224×224×3, in batches of 32, with a fixed seed of 42.
 
-![example of the dataset](IMG_1.jpeg)
+![example of the dataset](Photo /IMG_1.jpeg)
+
+
+
+
 
 
 
