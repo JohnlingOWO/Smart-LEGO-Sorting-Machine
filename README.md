@@ -48,6 +48,25 @@ Images were loaded with tf.keras.utils.image_dataset_from_directory at the nativ
 
 ![example of the dataset](IMG_1.jpeg)
 
+Four-Stage Training Execution 
+Training was carried out in four sequential stages. Each stage saved a Keras checkpoint to Google Drive so that training could be resumed in a separate Colab session. 
+	Stage 1 - Frozen base, head warm-up (Epochs 1–10): The MobileNetV3Large backbone was frozen ( base_model.trainable = False ), so only the 16,337 parameters of the classification head were updated. Learning rate: 1 × 10⁻⁴
+	Stage 2 - Partial unfreezing, fine-tuning (Epochs 11–20): The last 30 layers of the backbone were unfrozen. Learning rate was reduced to 1 × 10⁻⁵ to avoid disrupting the pretrained features
+	Stage 3 - Continued fine-tuning (Epochs 21–30): The training/validation loss curves at the end of Stage 2 showed no overfitting (validation loss was still decreasing), so training was continued for another ten epochs at the same 1 × 10⁻⁵ learning rate
+	Stage 4 - Final fine-tuning with checkpointing (Epochs 31–35): Two callbacks were added: ModelCheckpoint(monitor="val_loss", save_best_only=True) and EarlyStopping(monitor="val_loss", patience=2, restore_best_weights=True). Learning rate remained at 1 × 10⁻⁵. Training continued through the full five-epoch budget; validation loss improved at every epoch, so EarlyStopping never triggered.
+
+Training Results
+![Training and validation accuracy and loss over 35 epochs](IMG_2.jpeg)
+
+
+
+
+
+
+
+
+
+
 
 
 
